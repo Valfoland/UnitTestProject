@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FolomeevUnitTestLib">
+    <output-path>$PROJECT_DIR$/out/artifacts/FolomeevUnitTestLib</output-path>
+    <root id="archive" name="FolomeevUnitTestLib.jar">
+      <element id="module-output" name="FolomeevUnitTestLib" />
+    </root>
+  </artifact>
+</component>
