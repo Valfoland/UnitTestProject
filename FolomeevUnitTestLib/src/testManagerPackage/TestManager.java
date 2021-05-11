@@ -1,4 +1,4 @@
-package TestManager;
+package testManagerPackage;
 
 import java.util.ArrayDeque;
 import java.util.NoSuchElementException;
@@ -8,11 +8,11 @@ public class TestManager {
     private int numberOfThreads;
     private ArrayDeque<Class> classQueue = new ArrayDeque<>();
 
-    public TestManager(String[]args) {
+    public TestManager(String[] args) {
         initData(args);
     }
 
-    private void initData(String[]args) {
+    private void initData(String[] args) {
         for (int i = 0; i < args.length; i++) {
             try {
                 if (i == 0) {
@@ -20,14 +20,17 @@ public class TestManager {
                 } else {
                     classQueue.push(Class.forName(args[i]));
                 }
-            } catch (Exception e) {
-
+            } catch (ClassNotFoundException e) {
+                System.out.println("=====================================");
+                System.out.println("Класс не найден");
+                System.out.println(e.getMessage());
+                System.out.println("=====================================");
             }
         }
     }
 
-    public void runTesting(){
-        for(int i = 0; i < numberOfThreads; i++){
+    public void runTesting() {
+        for (int i = 0; i < numberOfThreads; i++) {
             new Thread(() -> startThreadTesting()).start();
         }
     }
@@ -48,4 +51,5 @@ public class TestManager {
             }
         }
     }
+
 }

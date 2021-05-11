@@ -1,4 +1,4 @@
-import TestManager.*;
+import testManagerPackage.*;
 
 public class TestedClass2 {
 
@@ -8,19 +8,16 @@ public class TestedClass2 {
     @Before
     public void beforeMethod(){
         a = 2;
-        b = 2;
-        System.out.println("--------- Before Method 2 ---------");
+        b = 3;
     }
 
     @Test
     public void method1() {
-        System.out.println("--------- Test Method 2.1 ---------");
         Asserter.assertEquals(a, b);
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void method2() {
-        System.out.println("--------- Test Method 2.2 ---------");
         int[] i = new int[0];
         i[1] = 2;
     }

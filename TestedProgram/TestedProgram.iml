@@ -8,5 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="FolomeevUnitTestLib" level="project" />
+    <orderEntry type="library" name="UnitTestProject" level="project" />
+    <orderEntry type="module" module-name="FolomeevUnitTestLib" />
   </component>
 </module>

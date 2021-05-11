@@ -1,10 +1,8 @@
-package TestManager;
+package testManagerPackage;
 
 import java.lang.reflect.Method;
 
 public class TestLogWriter {
-
-    public static boolean statusTest = false;
 
     private int countPassedTests = 0;
     private int countFailedTests = 0;
@@ -15,41 +13,36 @@ public class TestLogWriter {
 
     public TestLogWriter(Class clazz) {
         stringBuffer = new StringBuffer();
-        stringBuffer.append("\r\n" + "Tested Class: " + clazz.getName());
+        stringBuffer.append("\r\n==========================");
+        stringBuffer.append("\r\n" + "Tested Class: " + clazz.getName() + "\r\n");
     }
 
     public void writeLogNotCaughtExceptions(Method method, Test test) {
         stringBuffer.append("\r\nMethod: " + method.getName()  + " did not catch the expected exception -> " + test.expected());
     }
 
-    public void writeLogCaughtExceptions(Method method, Test test, double time, Throwable e) {
-        if (test.expected().equals(e.getCause().getClass())) {
-            stringBuffer.append("\r\nMethod " + method.getName() + "()" + " caught the expected exception");
-            stringBuffer.append("\r\nException: " + e.getCause());
-            stringBuffer.append("\r\nTime passed: " + time + " ms");
-
-            if (statusTest) {
-                countPassedTests++;
-                stringBuffer.append("\r\nTest: Passed\r\n");
-                statusTest = false;
-            } else {
-                countFailedTests++;
-                stringBuffer.append("\r\nTest: Failed\r\n");
-            }
-        } else {
-            stringBuffer.append("\r\nTest: " + method + " Error: " + e.getCause());
-            countErrorTests++;
-            isCompleteTest = false;
-        }
+    public void writeLogCaughtExceptions(Method method, double time, Throwable e) {
+        stringBuffer.append("\r\nMethod " + method.getName() + "()" + " caught the expected exception");
+        stringBuffer.append("\r\nException: " + e.getCause());
+        stringBuffer.append("\r\nTime passed: " + time + " ms");
+        stringBuffer.append("\r\nTest: Passed\r\n");
+        countPassedTests++;
     }
 
-    public void writeLogWithAsserts(Method method, double time) {
+    public void writeLogCaughtNotExpectedExceptions(Method method, double time, Throwable e) {
+        stringBuffer.append("\r\nMethod " + method.getName() + "()" + " caught the not expected exception");
+        stringBuffer.append("\r\nTest: " + method + " Error: " + e.getCause());
+        stringBuffer.append("\r\nTest: Error\r\n");
+        countErrorTests++;
+        isCompleteTest = false;
+    }
+
+    public void writeLogWithAsserts(Method method, double time, boolean testStatus) {
         stringBuffer.append("\r\nMethod " + method.getName() + "()");
         stringBuffer.append("\r\nTime passed: " + time + " ms");
-        if (statusTest) {
+        if (testStatus) {
             countPassedTests++;
             stringBuffer.append("\r\nTest: Passed\r\n");
-            statusTest = false;
         } else {
             countFailedTests++;
             stringBuffer.append("\r\nTest: Failed\r\n");

@@ -1,4 +1,4 @@
-package TestManager;
+package testManagerPackage;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,8 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface Test {
-    Class<? extends Throwable> expected() default Null.class;
-}
+public @interface After {
 
-class Null extends Throwable{ }
+}
