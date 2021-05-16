@@ -1,6 +1,6 @@
-import testManagerPackage.AssertTrueException;
-import testManagerPackage.Asserter;
-import testManagerPackage.TestManager;
+import testsystem.manager.AssertTrueException;
+import testsystem.manager.Asserter;
+import testsystem.manager.TestManager;
 
 public class Program {
 

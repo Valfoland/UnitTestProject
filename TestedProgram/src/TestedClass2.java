@@ -1,4 +1,4 @@
-import testManagerPackage.*;
+import testsystem.manager.*;
 
 public class TestedClass2 {
 

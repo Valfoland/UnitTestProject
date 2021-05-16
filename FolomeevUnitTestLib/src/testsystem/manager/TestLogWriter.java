@@ -1,4 +1,4 @@
-package testManagerPackage;
+package testsystem.manager;
 
 import java.lang.reflect.Method;
 
